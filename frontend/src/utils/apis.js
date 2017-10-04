@@ -1,10 +1,9 @@
-import fs from 'fs';
-import Yaml from 'js-yaml';
 import axios from 'axios';
 
-const config = Yaml.safeLoad(fs.readFileSync('../config/base_url.yml', 'utf8'));
 
-const base_url = config[process.env.BASE_URL] || config.local;
+const config = require('./config.json');
+
+const base_url = process.env.BASE_URL || config.local;
 
 const headers = {
     'Accept': 'applicaiton/json',
@@ -43,7 +42,7 @@ export const deletePost = (id, callback) => {
     return axios.delete(`${base_url}/posts/${id}`, {headers}).then(() => callback())
 };
 
-export const getCatogories = () => {
+export const getAllCategories = () => {
     return axios.get(`${base_url}/categories`, {headers})
 };
 
