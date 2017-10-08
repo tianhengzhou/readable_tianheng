@@ -6,7 +6,7 @@ const initialPostState = {
     comments: []
 };
 
-function posts(state=initialPostState, action) {
+export function posts(state=initialPostState, action) {
     switch (action.type){
         case ADD_POST:
             return {

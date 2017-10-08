@@ -29,8 +29,8 @@ const store = createStore(
     )
 );
 
-store.dispatch(getCategories());
 store.dispatch(getPosts());
+store.dispatch(getCategories());
 
 ReactDOM.render(
     <Provider store={store}>
