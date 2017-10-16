@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import '../App.css';
 // import AddPost from 'AddPost';
 import Posts from './Posts';
+import AddPost from './AddPost';
 import { Route } from 'react-router-dom';
 
 
@@ -13,9 +14,9 @@ class App extends Component {
         <Route exact path='/' render={ () => (
             <Posts />
         )}/>
-        {/*<Route path='/add/post/:category?' render={ (props) => (*/}
-            {/*<AddPost {...props} category={props.match.params.category}/>*/}
-        {/*)}/>*/}
+        <Route path="/add/post/:category?" render={(props) => (
+          <AddPost {...props} category={props.match.params.category}/>
+        )}/>
       </div>
     );
   }

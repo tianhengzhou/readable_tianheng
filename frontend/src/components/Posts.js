@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import Header from './Header'
 import PropTypes from 'prop-types';
 import { categories } from "../reducers/ReducersCategories";
+import {Link} from 'react-router-dom'
+import { Glyphicon } from 'react-bootstrap'
+
 
 class Posts extends Component {
 
@@ -9,8 +13,16 @@ class Posts extends Component {
 
         return (
             <div className="main-page">
+                <Header/>
+                <div className="col-xs-2">
+                    {this.props.allCategories.map((category) => {
+                        return <ol>
+                            {category.name}
+                        </ol>
+                    })}
+                </div>
                 <div className="col-xs-5">
-                    <div className="posts">
+                    <div className="post">
                         <h3>Posts</h3>
                         <ol>
                             {this.props.allPosts
@@ -31,6 +43,9 @@ class Posts extends Component {
                             }
                         </ol>
                     </div>
+                    <div className="add-post">
+                        <Link to={{pathname: this.props.category !== undefined ? `/add/post/${this.props.category}` : '/add/post' }}>Add Post</Link>
+                    </div>
                 </div>
             </div>
         );
@@ -40,7 +55,6 @@ class Posts extends Component {
 Posts.propTypes = {};
 Posts.defaultProps = {};
 function mapStateToProps ({posts, categories}) {
-    console.log(posts)
     return {
         allPosts: posts.posts,
         allCategories: categories.categories,
