@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Header from './Header'
+import Post from './Post';
 import PropTypes from 'prop-types';
 import { categories } from "../reducers/ReducersCategories";
 import {Link} from 'react-router-dom'
@@ -38,7 +39,7 @@ class Posts extends Component {
                                 })
                                 .map((post) => {
                                     if (!post.deleted)
-                                        return <p>{post.body} <span>{post.category}</span></p>
+                                        return <Post key={post.id} post={post}/>
                                 })
                             }
                         </ol>

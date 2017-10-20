@@ -5,6 +5,7 @@ import '../App.css';
 import Posts from './Posts';
 import AddPost from './AddPost';
 import { Route } from 'react-router-dom';
+import { PostContent } from "./PostContent";
 
 
 class App extends Component {
@@ -16,6 +17,9 @@ class App extends Component {
         )}/>
         <Route path="/add/post/:category?" render={(props) => (
           <AddPost {...props} category={props.match.params.category}/>
+        )}/>
+        <Route path="/posts/:postid" render={(props) => (
+          <PostContent postid={props.match.params.postid}/>
         )}/>
       </div>
     );

@@ -9,7 +9,8 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers'
 import { getCategories } from './actions/ActionsCategories'
-import {getPosts} from "./actions/ActionsPosts";
+import { getPosts } from "./actions/ActionsPosts";
+import { getComments } from "./actions/ActionsComments";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose();
 
