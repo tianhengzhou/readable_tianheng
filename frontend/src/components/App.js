@@ -5,7 +5,7 @@ import '../App.css';
 import Posts from './Posts';
 import AddPost from './AddPost';
 import { Route } from 'react-router-dom';
-import { PostContent } from "./PostContent";
+import PostContent from "./PostContent";
 
 
 class App extends Component {

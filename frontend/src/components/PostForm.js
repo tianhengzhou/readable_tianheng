@@ -64,7 +64,7 @@ const renderSelect = ({
 		</div>)
 }
 
-function mapStateToProps({post, categories}) {
+function mapStateToProps({categories}) {
 	return {
 		categories: categories.categories
 	};
@@ -72,7 +72,7 @@ function mapStateToProps({post, categories}) {
 
 
 let PostForm = props => {
-    const { handleSubmit, pristine, reset, submitting, categories } = props
+    const { handleSubmit, pristine, reset, submitting, categories } = props;
 	return (
 		<div>
 			<Header/>

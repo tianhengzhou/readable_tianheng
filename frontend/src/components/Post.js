@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getComments, postComments } from '../actions/ActionsComments';
+import { Link } from 'react-router-dom';
+import { getComments } from '../actions/ActionsComments';
 
-function mapStateToProps(comments) {
+function mapStateToProps({comments}) {
 	return {
 		comments: comments
 	};
@@ -11,14 +12,10 @@ function mapStateToProps(comments) {
 function mapDispatchToProps(dispatch) {
 	return {
         getComments: (id) => dispatch(getComments(id))
-
     };
 }
 
 export class Post extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
     componentDidMount() {
         this.props.getComments(this.props.post.id)
@@ -32,11 +29,10 @@ export class Post extends React.Component {
         return (
 			<div className='edit-post'>
 				<div className="col-xs-11">
-					<div className="post-title">{post.title} - {post.category}</div>
-					<div className="post-body">{post.body}</div>
 					<Link to={{ pathname: "/posts/" + post.id }}>
-						<div className="post-comments">comments ({numberOfComments - deletedComments})</div>
+						<div className="post-title">{post.title} - {post.category}</div>
 					</Link>
+					<div className="post-comments">comments ({numberOfComments - deletedComments})</div>
 				</div>
 			</div>
 		);

@@ -5,7 +5,6 @@ import Post from './Post';
 import PropTypes from 'prop-types';
 import { categories } from "../reducers/ReducersCategories";
 import {Link} from 'react-router-dom'
-import { Glyphicon } from 'react-bootstrap'
 
 
 class Posts extends Component {
@@ -17,7 +16,7 @@ class Posts extends Component {
                 <Header/>
                 <div className="col-xs-2">
                     {this.props.allCategories.map((category) => {
-                        return <ol>
+                        return <ol key={category.name}>
                             {category.name}
                         </ol>
                     })}
@@ -25,7 +24,7 @@ class Posts extends Component {
                 <div className="col-xs-5">
                     <div className="post">
                         <h3>Posts</h3>
-                        <ol>
+                        <ul>
                             {this.props.allPosts
                                 .filter(post => {
                                     if (this.props.category) {
@@ -42,7 +41,7 @@ class Posts extends Component {
                                         return <Post key={post.id} post={post}/>
                                 })
                             }
-                        </ol>
+                        </ul>
                     </div>
                     <div className="add-post">
                         <Link to={{pathname: this.props.category !== undefined ? `/add/post/${this.props.category}` : '/add/post' }}>Add Post</Link>

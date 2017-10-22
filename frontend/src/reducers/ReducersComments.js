@@ -5,7 +5,7 @@ const initialCommentState = {
 };
 
 export function comments(state = initialCommentState, action) {
-    const { parentId, comment } = action;
+    const { parentId, comments } = action;
     switch (action.type) {
         case REQUEST_COMMENTS:
             return {
@@ -16,7 +16,7 @@ export function comments(state = initialCommentState, action) {
             return {
                 ...state,
                 isFetching: false,
-                parentId: comment
+                [parentId]: comments
             };
         default:
             return state;
