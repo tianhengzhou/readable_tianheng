@@ -32,7 +32,7 @@ export function getComments(id) {
     }
 }
 
-export function postComments(comment) {
+export function postComment(comment) {
     return function (dispatch) {
         return Api.postComment(JSON.stringify(comment)).then(resp => dispatch(addComment(resp, comment)))
     }

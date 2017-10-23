@@ -31,8 +31,8 @@ export function getPosts() {
     }
 }
 
-export function postPost(post) {
+export function postPost(post, callback) {
     return function (dispatch) {
-        return Api.addPosts(JSON.stringify(post)).then(resp => dispatch(addPost(resp, post)))
+        return Api.addPosts(JSON.stringify(post), callback).then(resp => dispatch(addPost(resp, post)))
     }
 }

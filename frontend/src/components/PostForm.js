@@ -76,51 +76,53 @@ let PostForm = props => {
 	return (
 		<div>
 			<Header/>
-			<Form horizontal onSubmit={ handleSubmit }>
-				<Field
-					name='category'
-					type='select'
-					componentClass='select'
-					options={[{value:'', text:'Choose Category'}].concat(categories.map((category) => ({
-						value: category.name, text: category.name
-					})))}
-					component={renderSelect}
-					label='Category'
-				>
-				</Field>
-				<Field
-					name='author'
-					type='text'
-					component={renderField}
-					label='Author'
-				>
-				</Field>
-				<Field
-					name='title'
-					type='text'
-					component={renderField}
-					label='Title'
-				>
-				</Field>
-				<Field
-					name='body'
-					type='textarea'
-					componentClass='textarea'
-					component={renderField}
-					label='Body'
-				>
-				</Field>
-				<FormGroup>
-					<Col smOffset={1} sm={10}>
-						<Button type="submit" disabled={submitting}>
-							Submit
-						</Button>
-						<Button type="button" disabled={pristine || submitting} onClick={reset}>
-							Clear Values
-						</Button>
-					</Col>
-				</FormGroup>
-			</Form>
+			<div className="well">
+				<Form horizontal onSubmit={ handleSubmit }>
+					<Field
+						name='category'
+						type='select'
+						componentClass='select'
+						options={[{value:'', text:'Choose Category'}].concat(categories.map((category) => ({
+							value: category.name, text: category.name
+						})))}
+						component={renderSelect}
+						label='Category'
+					>
+					</Field>
+					<Field
+						name='author'
+						type='text'
+						component={renderField}
+						label='Author'
+					>
+					</Field>
+					<Field
+						name='title'
+						type='text'
+						component={renderField}
+						label='Title'
+					>
+					</Field>
+					<Field
+						name='body'
+						type='textarea'
+						componentClass='textarea'
+						component={renderField}
+						label='Body'
+					>
+					</Field>
+					<FormGroup>
+						<Col smOffset={1} sm={10}>
+							<Button type="submit" disabled={submitting}>
+								Submit
+							</Button>
+							<Button type="button" disabled={pristine || submitting} onClick={reset}>
+								Clear Values
+							</Button>
+						</Col>
+					</FormGroup>
+				</Form>
+			</div>
 		</div>
 	)
 }

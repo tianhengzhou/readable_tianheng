@@ -15,11 +15,12 @@ class Posts extends Component {
             <div className="main-page">
                 <Header/>
                 <div className="col-xs-2">
-                    {this.props.allCategories.map((category) => {
+                    {this.props.allCategories.length > 0?
+                        this.props.allCategories.map((category) => {
                         return <ol key={category.name}>
-                            {category.name}
+                            <Link to={{pathname: `/category/${category.path}`}}>{category.name}</Link>
                         </ol>
-                    })}
+                    }): null}
                 </div>
                 <div className="col-xs-5">
                     <div className="post">

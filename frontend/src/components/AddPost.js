@@ -13,22 +13,22 @@ function mapStateToProps({posts, categories}) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		postPost: (data) => dispatch(postPost(data))
+		postPost: (data, callback) => dispatch(postPost(data, callback))
 	}
 }
 
 export class AddPost extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+
     submit = (values, context) => {
         values.timestamp = Date.now();
         values.id = uuidv4();
         values.voteScore = 1;
         values.deleted = false;
-        this.props.postPost(values);
-        this.props.category ? this.props.history.push(`/category/${this.props.category}`) : this.props.history.push('/')
-    }
+        this.props.postPost(values, () => {
+            this.props.category ? this.props.history.push(`/category/${this.props.category}`) : this.props.history.push('/')
+        });
+    };
+
 	render() {
 		return (
 			<PostForm onSubmit={this.submit} initialValues={{category: this.props.category, categories: this.props.categories}}/>
