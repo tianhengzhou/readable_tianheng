@@ -33,18 +33,16 @@ export const addPosts = (post, callback) => {
         .then(() => callback())
 };
 
-export const updatePost = (post, callback) => {
-    return axios
-        .put(`${base_url}/posts/${post.id}`, post, { headers })
-        .then(() => callback())
+export const updatePost = (post) => {
+    return axios.put(`${base_url}/posts/${post.id}`, post, { headers })
 };
 
 export const voteOnPost = (id, option) => {
-    return axios.put(`${base_url}/posts/${id}`, {option}, { headers })
+    return axios.post(`${base_url}/posts/${id}`, {option}, { headers })
 };
 
-export const deletePost = (id, callback) => {
-    return axios.delete(`${base_url}/posts/${id}`, { headers }).then(() => callback())
+export const deletePost = (id) => {
+    return axios.delete(`${base_url}/posts/${id}`, { headers })
 };
 
 export const getAllCategories = () => {
@@ -68,7 +66,7 @@ export const updateComment = (comment) => {
 };
 
 export const voteOnComment = (id, option) => {
-    return axios.put(`${base_url}/comments/${id}`, {option}, {headers})
+    return axios.post(`${base_url}/comments/${id}`, {option}, {headers})
 };
 
 export const deleteComment = (id, callback) => {

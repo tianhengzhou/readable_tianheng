@@ -37,3 +37,4 @@ export function postComment(comment) {
         return Api.postComment(JSON.stringify(comment)).then(resp => dispatch(addComment(resp, comment)))
     }
 }
+
