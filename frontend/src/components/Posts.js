@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Header from './Header'
 import Post from './Post';
-import PropTypes from 'prop-types';
-import { categories } from "../reducers/ReducersCategories";
+import sortBy from 'sort-by'
 import {Link} from 'react-router-dom'
-
+import Sort from "./Sort";
 
 class Posts extends Component {
 
@@ -25,6 +24,7 @@ class Posts extends Component {
                 <div className="col-xs-5">
                     <div className="post">
                         <h3>Posts</h3>
+                        <Sort/>
                         <ul>
                             {this.props.allPosts
                                 .filter(post => {
@@ -37,6 +37,7 @@ class Posts extends Component {
                                     }
 
                                 })
+                                .sort(sortBy(this.props.sort.sortOrder + this.props.sort.sortCategory))
                                 .map((post) => {
                                     if (!post.deleted)
                                         return <Post key={post.id} post={post}/>
@@ -53,8 +54,6 @@ class Posts extends Component {
     }
 }
 
-Posts.propTypes = {};
-Posts.defaultProps = {};
 function mapStateToProps ({posts, categories}) {
     return {
         allPosts: posts.posts,

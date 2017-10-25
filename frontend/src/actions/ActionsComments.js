@@ -16,6 +16,26 @@ function receiveComments(parentId, data) {
     }
 }
 
+function receiveUpdateComment(result, comment, timestamp) {
+    return {
+        type: Action.RECEIVE_UPDATE_COMMENT,
+        comment: comment,
+        result: result,
+        timestamp: timestamp,
+        lastRequest: Date.now()
+    }
+}
+
+function receiveDeleteComment(resp, id, parentId) {
+    return {
+        type: Action.RECEIVE_DELETE_COMMENT,
+        id: id,
+        parentId: parentId,
+        result: resp,
+        lastRequest: Date.now()
+    }
+}
+
 function addComment(resp, comment) {
     return {
         type: Action.ADD_COMMENT,
@@ -38,3 +58,14 @@ export function postComment(comment) {
     }
 }
 
+export function updateComment(comment, timestamp) {
+    return function (dispatch) {
+        return Api.updateComment(comment).then(resp => dispatch(receiveUpdateComment(resp, comment, timestamp)))
+    }
+}
+
+export function deleteComment(id, parentId) {
+    return function (dispatch) {
+        return Api.deleteComment(id).then(resp => dispatch(receiveDeleteComment(resp, id, parentId)))
+    }
+}

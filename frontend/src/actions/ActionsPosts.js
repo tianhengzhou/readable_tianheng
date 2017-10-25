@@ -9,6 +9,7 @@ function requestPosts() {
 
 function receiveDeletePost(data, id) {
     return {
+        type: Action.RECEIVE_DELETE_POST,
         id: id,
         result: data,
         lastRequest: Date.now()

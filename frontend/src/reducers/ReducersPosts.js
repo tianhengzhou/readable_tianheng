@@ -37,8 +37,8 @@ export function posts(state=initialPostState, action) {
         case RECEIVE_SORT:
             let sortOrder = state.sortOrder;
             action.sort === state.sortCategory
-                ? sortOrder === 'desc' ? sortOrder = 'asc' : sortOrder = 'desc'
-                : sortOrder = 'desc';
+                ? sortOrder === '-' ? sortOrder = '' : sortOrder = '-'
+                : sortOrder = '-';
             return {
                 ...state,
                 sortOrder: sortOrder,
@@ -74,7 +74,7 @@ export function posts(state=initialPostState, action) {
                 posts: state.posts.map(post => {
                     if (post.id === action.id)
                         return Object.assign({}, post, {
-                            deleted: action.result.ok
+                            deleted: action.result.data.deleted
                         })
                     return post
                 })

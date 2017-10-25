@@ -69,6 +69,6 @@ export const voteOnComment = (id, option) => {
     return axios.post(`${base_url}/comments/${id}`, {option}, {headers})
 };
 
-export const deleteComment = (id, callback) => {
-    return axios.delete(`${base_url}/comments/${id}`, {headers}).then(() => callback())
+export const deleteComment = (id) => {
+    return axios.delete(`${base_url}/comments/${id}`, {headers})
 };

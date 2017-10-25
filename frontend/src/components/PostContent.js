@@ -1,16 +1,19 @@
 import React from 'react';
-import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import Header from "./Header";
-import { Link } from 'react-router-dom'
+import sortBy from 'sort-by';
+import { Link } from 'react-router-dom';
 import {getComments} from '../actions/ActionsComments';
 import Comment from "./Comment";
+import Post from './Post'
+import Sort from "./Sort";
 
 function mapStateToProps({posts, categories, comments}) {
 	return {
         allPosts: posts.posts,
         allCategories: categories.categories,
         comments: comments,
+        sort: posts
 	};
 }
 
@@ -23,7 +26,6 @@ function mapDispatchToProps(dispatch) {
 export class PostContent extends React.Component {
 
     componentDidMount() {
-        console.log(this.props.postid);
         this.props.getComments(this.props.postid);
     }
 
@@ -43,18 +45,14 @@ export class PostContent extends React.Component {
                                 } else {
                                     return (
                                         <div key={post.id}>
-                                            <div className="post-title">{post.title} - {post.category}</div>
-                                            <div className="post-body">{post.body}</div>
-                                            <div className="post-footer">{post.voteScore} points by {post.author} submitted @ <Moment format="YYYY-MM-DD HH:mm">{post.timestamp}</Moment></div>
-                                            <div className="post-comments">comments ({this.props.comments[this.props.postid] === undefined ? 0 : this.props.comments[this.props.postid].length})</div>
-
+                                            <Post post={post} detail={true}/>
+                                            <Sort comment={true}/>
                                             <ol>
                                                 {this.props.comments[this.props.postid] === undefined ? null : this.props.comments[this.props.postid]
+                                                    .sort(sortBy(this.props.sort.sortOrder + this.props.sort.sortCategory))
                                                     .map((comment) => {
                                                         if (!comment.deleted)
-                                                            return <Comment key={comment.id} comment={comment}/>;
-                                                        else
-                                                            return <span>Comment has been deleted</span>
+                                                            return <Comment key={comment.id} comment={comment}/>
                                                     })}
                                             </ol>
                                             <div className="add-post">

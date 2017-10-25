@@ -47,7 +47,7 @@ export function comments(state = initialCommentState, action) {
                 ...state,
                 [action.parentId]: state[action.parentId].map(el => {
                     if(el.id === action.id)
-                        return Object.assign({}, el, {deleted: action.result.ok})
+                        return Object.assign({}, el, {deleted: action.result.data.deleted})
                     return el
                 })
             }
