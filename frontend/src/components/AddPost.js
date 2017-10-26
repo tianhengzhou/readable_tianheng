@@ -25,7 +25,7 @@ export class AddPost extends React.Component {
         values.voteScore = 1;
         values.deleted = false;
         this.props.postPost(values, () => {
-            this.props.category ? this.props.history.push(`/category/${this.props.category}`) : this.props.history.push('/')
+            this.props.category ? this.props.history.push(`/${this.props.category}`) : this.props.history.push('/')
         });
     };
 

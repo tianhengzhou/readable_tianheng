@@ -20,11 +20,12 @@ function mapDispatchToState(dispatch) {
 
 export class AddComment extends React.Component {
     submit = (value, content) => {
+        const category = this.props.posts.filter(p => p.id === this.props.parentId).map(c => c.category)[0];
         value.id = uuidv1();
         value.timestamp = Date.now();
         value.parentId = this.props.parentId;
         this.props.postComment(value);
-        this.props.history.push(`/posts/${this.props.parentId}`)
+        this.props.history.push(`/${category}/${this.props.parentId}`)
 
     }
 	render() {

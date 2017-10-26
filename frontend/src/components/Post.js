@@ -61,7 +61,7 @@ export class Post extends React.Component {
 				</div>
 				<div className="col-xs-11">
 					{(!this.props.detail) ?
-						<Link to={{ pathname: "/posts/" + post.id }}>
+						<Link to={{ pathname: "/p/" + post.category +"/" + post.id }}>
 							<div className="post-title">{post.title} - {post.category}</div>
 						</Link>
 						: <div className="post-title">{post.title} - {post.category}</div>

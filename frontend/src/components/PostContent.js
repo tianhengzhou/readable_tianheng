@@ -56,7 +56,7 @@ export class PostContent extends React.Component {
                                                     })}
                                             </ol>
                                             <div className="add-post">
-                                                <Link to={{pathname: "/add/comment/" + post.id}}>Add Comment</Link>
+                                                <Link to={{pathname: "/create/comment/" + post.id}}>Add Comment</Link>
                                             </div>
                                         </div>
                                     )
