@@ -26,7 +26,6 @@ export class AddComment extends React.Component {
         value.parentId = this.props.parentId;
         this.props.postComment(value);
         this.props.history.push(`/p/${category}/${this.props.parentId}`)
-
     }
 	render() {
         const category = this.props.posts.filter(p => p.id === this.props.parentId).map(c => c.category)[0];
