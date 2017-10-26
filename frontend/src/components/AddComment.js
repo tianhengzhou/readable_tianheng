@@ -25,7 +25,7 @@ export class AddComment extends React.Component {
         value.timestamp = Date.now();
         value.parentId = this.props.parentId;
         this.props.postComment(value);
-        this.props.history.push(`/${category}/${this.props.parentId}`)
+        this.props.history.push(`/p/${category}/${this.props.parentId}`)
 
     }
 	render() {
