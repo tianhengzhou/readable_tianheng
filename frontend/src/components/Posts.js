@@ -17,7 +17,7 @@ class Posts extends Component {
                     {this.props.allCategories.length > 0?
                         this.props.allCategories.map((category) => {
                         return <ol key={category.name}>
-                            <Link to={{pathname: `/c/${category.path}`}}>{category.name}</Link>
+                            <Link to={{pathname: `/${category.path}`}}>{category.name}</Link>
                         </ol>
                     }): null}
                 </div>
